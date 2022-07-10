@@ -1,5 +1,9 @@
 import { qrcode } from "https://deno.land/x/qrcode@v2.0.0/mod.ts";
 
-const base64Image = await qrcode("https://github.com/hoopengo", { size: 512 });
+async function qrgen(uri: string) {
+    return await qrcode(uri, { size: 256 });
+}
 
-Deno.writeTextFileSync("./qrcode/qrcode.html", `<img src="${base64Image}" />`);
+export {
+    qrgen
+}
